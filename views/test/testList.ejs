@@ -4,7 +4,6 @@
     document.addEventListener('DOMContentLoaded', async function() {
         const token = localStorage.getItem('token');
         if (token) {
-            console.log('Token exists in localSotrage: ', token);
             fetch('/test/list', {
                 method: 'GET', // or 'GET'
                 headers: {
@@ -22,7 +21,6 @@
         rows.forEach(function(row) {
             row.addEventListener('click', function() {
                 var href = this.getAttribute('data-href');
-                console.log(window.location.pathname);
                 if (href) {
                     window.location.pathname = `test/${href}`;
                 }

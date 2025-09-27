@@ -7,7 +7,6 @@ module.exports = async (req, res) => {
         const data = await deletePrescriptionReport(reportID);
         
         if(data.error){
-            console.log(data.error);
             return res.status(201).json({ //400
                 status: false,
                 result: data.error,

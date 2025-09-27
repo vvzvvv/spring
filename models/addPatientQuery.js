@@ -10,7 +10,6 @@ const getPatientSearch = async(searchInput) => {
                 }
             }
         })
-        //console.log(data);
         return data;
     } catch (error) {
         console.error(error);
@@ -26,7 +25,6 @@ const getRequestStatus = async (doctorId, userId) => {
                 user_id: userId,
             }
         });
-        //console.log(data);
         return data;
     } catch (error) {
         console.error(error);

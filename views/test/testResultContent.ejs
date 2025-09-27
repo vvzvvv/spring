@@ -51,7 +51,6 @@
 
         var testResult = document.getElementById("testResult").defaultValue;
         testResult = JSON.parse(testResult);
-        console.log(testResult);
         if(testResult){
             for(var i = 1; i<10; i++){
                 selectRadioButton(i, testResult.result[i-1]);

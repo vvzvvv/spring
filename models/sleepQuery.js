@@ -3,7 +3,6 @@ const { Op } = require('sequelize');
 
 // createSleepReport 함수 정의
 const createSleepReport = async (date, wakeDate, rate, duration, startTime, endTime, userId) => {
-    // console.log(date);
     const data = await db.sleepReport.create({
         sleep_date: date,
         wake_date: wakeDate,
@@ -18,7 +17,6 @@ const createSleepReport = async (date, wakeDate, rate, duration, startTime, endT
 
 // getSleepReportByDate 함수 정의
 const getSleepReportByDate = async (date, userId) => {
-    // console.log(date, userId);
     const data = await db.sleepReport.findOne({
         where: {
             sleep_date: date,
@@ -33,7 +31,6 @@ const getLast7DaysSleepData = async (userId) => {
     const today = new Date();
     const lastWeek = new Date();
     lastWeek.setDate(today.getDate() - 7);
-    // console.log(lastWeek);
 
     const data = await db.sleepReport.findAll({
         where: {
@@ -44,8 +41,6 @@ const getLast7DaysSleepData = async (userId) => {
         },
         order: [['sleep_date', 'ASC']]
     });
-
-    // console.log(data);
 
     return data.map(entry => ({
         date: entry.sleep_date,

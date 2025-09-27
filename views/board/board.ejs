@@ -55,7 +55,6 @@
             }
 
             if(userInfo.sleep_agreement){
-                console.log(userInfo.sleep_agreement);
                 await getjSleepInfo(userID);
             }
 
@@ -68,7 +67,6 @@
             }
         }
         else {
-            console.log('Token does not exist in localStorage');
             window.location.href = '/user/login';
         }
     })
@@ -100,8 +98,6 @@
             }
         });
 
-        // 데이터 파싱
-        console.log(response);
         data = response.json();
         // 라벨 생성 (날짜)
         const labels = [];

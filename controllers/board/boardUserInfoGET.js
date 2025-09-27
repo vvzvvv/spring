@@ -3,11 +3,9 @@ const { authenticateToken } = require("../../authenticateToken");
 
 module.exports = async (req, res) => {
     const { userID } = req.params;
-    console.log(userID);
 
     try {
         const userInfo = await boardQuery.getUserInfo(userID);
-        console.log(userInfo);
         res.status(200).json(userInfo);
     } catch (error) {
         console.error('Error in userInfo:', error);

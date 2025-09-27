@@ -1,7 +1,6 @@
 module.exports = async (req, res) => {
     try {
         const { userId } = req.params;
-
         res.redirect(`/patient/${userId}`);
     } catch (error) {
         console.error('Error opening patient page:', error);

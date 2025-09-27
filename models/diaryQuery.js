@@ -19,7 +19,6 @@ async function saveDiaryEntry(userID, date, weather, contents, photoUrl) {
             await entry.save();
         }
 
-        console.log('일기 저장 완료:', entry);
         return entry;
     } catch (error) {
         console.error('일기 저장 중 오류 발생:', error);
@@ -40,7 +39,6 @@ async function getDiaryEntry(date, userID) {
 async function addPhoto(date, photo) {
     try {
         await Diary.update({ photo }, { where: { date } });
-        console.log('사진 추가 완료');
     } catch (error) {
         console.error('사진 추가 중 오류 발생:', error);
         throw error;
@@ -50,7 +48,6 @@ async function addPhoto(date, photo) {
 async function deletePhoto(date) {
     try {
         await Diary.update({ photo: null }, { where: { date } });
-        console.log('사진 삭제 완료');
     } catch (error) {
         console.error('사진 삭제 중 오류 발생:', error);
         throw error;

@@ -12,11 +12,10 @@ module.exports = async (userID) => {
         //     console.error(error);
         // });
 
-        console.log(result);
         return result;
     }
     catch(err) {
-        console.log(err);
+        console.error(err);
     }
 }
 

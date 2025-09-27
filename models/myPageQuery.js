@@ -18,8 +18,6 @@ const getManagementList = async (user_id) => {
             ],
         });
 
-        console.log("data: ", data);
-
         var result = [];
         data.forEach((info) => {
             result.push({
@@ -30,8 +28,7 @@ const getManagementList = async (user_id) => {
                 "doctor_name" : info.doctor.name,
                 "doctor_license_number" : info.doctor.license_number,
             })
-        })
-
+        });
         return result;
     } catch (error) {
         console.error('Error in getManagementList:', error);
@@ -52,9 +49,7 @@ const putManagementList = async(userID, requestID, num) => {
                 }
             }
         );
-
         return data;
-
     } catch (error) {
         console.error('Error in putManagementList:', error);
         throw error;
@@ -67,8 +62,6 @@ const postManagementList = async(userID, doctorID) =>{
             user_id: userID,
             doctor_id: doctorID,
         });
-
-        console.log('새 데이터가 저장되었습니다:', data);
         return data;
     } catch (error) {
         console.error('Error in PostManagementList : ', error);
@@ -84,8 +77,6 @@ const deleteManagementList = async(userID, doctorID) => {
                 doctor_id: doctorID,
             }
         });
-
-        console.log('새 데이터가 저장되었습니다:', data);
         return data;
     } catch (error) {
         console.error('Error in PostManagementList : ', error);
@@ -124,7 +115,6 @@ const putAgreementList = async(userID, medicine_agreement, sleep_agreement, exer
             }
         }
     );
-    
     return data;
 }
 

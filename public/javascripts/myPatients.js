@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const token = localStorage.getItem('token');
 
     if (token) {
-        console.log('Token exists in localSotrage: ', token);
         fetch('/doctor_main/getRequestList', {
             method: 'GET',
             headers: {
@@ -108,7 +107,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         })
     }
     else {
-        console.log('Token does not exist in localStorage');
         window.location.href = '/user/login';
     }
 

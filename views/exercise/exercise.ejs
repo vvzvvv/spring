@@ -203,7 +203,6 @@
         }
 
         const result = await response.json();
-        console.log(result);
         alert('운동 기록이 저장되었습니다');
 
         window.location.reload(true);
@@ -322,7 +321,6 @@
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           updateChart(data);
           updateList(data);
         })
@@ -364,7 +362,6 @@
         })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           updateChart(data);
           updateList(data);
         })

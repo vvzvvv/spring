@@ -11,7 +11,6 @@ const getPrescriptionContent = async(userID) => {
             user_id: userID,
         }
     })
-    //console.log(data);
     return data;
 }
 
@@ -23,11 +22,11 @@ const postPrescriptionContent = async(name, date, amount, userID) => {
             prescription_date: date,
             prescription_amount: amount,
             user_id: userID
-        })
-        //console.log(data);
+        });
         return data;
     } catch (err) {
-
+		console.error('Error:', err);
+		throw err;
     }
 }
 
@@ -170,7 +169,7 @@ const getChart = async(userID) => {
             acc[prescription_name].push(prescription);
             return acc;
         }, {});
-        //console.log(groupedData);
+
         return groupedData;
 
     } catch (error) {

@@ -56,7 +56,6 @@
             }
             else{
                 var resultString = resultArray.toString().replaceAll(',','');
-                console.log(resultString);
 
                 // TODO : 서버로 결과 폼 내용 보내기()
                 // 서버로 데이터 전송하기
@@ -67,7 +66,6 @@
                 };
                 
                 const token = localStorage.getItem('token');
-                console.log('token: ', token);
 
                 const row = fetch('/test', { 
                     method: 'POST',
@@ -79,7 +77,6 @@
                 })
                 .then(result => result.json())
                 .then(data => {
-                    console.log('Success:', data);
                     if(data.status == 'fail'){
                         window.location.href = `/test/${data.data.test_id}`;
                         window.alert("오늘 이미 테스트를 진행했습니다. \n오늘 작성한 테스트 결과를 확인하세요!");
@@ -93,7 +90,6 @@
                 });
 
                 row.then((data) => {
-                    console.log('Response in final then:', data.data);
                     window.location.href = `/test/${data.data.test_id}`;
                 });
 

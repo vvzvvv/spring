@@ -59,9 +59,7 @@
 
     <script>
         
-        // localStorage로부터 토큰 꺼냄
         const token = localStorage.getItem('token');
-        console.log('token: ', token);
 
         document.addEventListener('DOMContentLoaded', () => {
             updateTotalSleepTime();
@@ -121,9 +119,7 @@
                 return response.json();
             })
             .then(data => {
-                // console.log(data);
                 if (data && data.length !== 0) {
-                    console.log("여기가찍히는겨?");
                     document.querySelector('#bedtime-date').value = data.sleep_date;
                     document.querySelector('input[name="bedtime-time"]').value = data.start_sleep_time;
                     document.querySelector('input[name="waketime-date"]').value = data.wake_date;
@@ -139,7 +135,6 @@
                     const sleepDurationMinutes = sleepDuration.getUTCMinutes();
                     document.getElementById('total-sleep-time').textContent = `총 수면시간은 ${sleepDurationHours} 시간 ${sleepDurationMinutes} 분 입니다.`;
                 } else {
-                    console.log("Here?");
                     document.querySelector('input[name="bedtime-date"]').value = '';
                     document.querySelector('input[name="bedtime-time"]').value = '';
                     document.querySelector('input[name="waketime-time"]').value = '';
@@ -163,13 +158,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 if (data.length === 0) {
                     console.error('No sleep data available');
                     return;
                 }
 
-                console.log('Sleep data for chart:', data);
                 const labels = data.map(entry => entry.date);
                 const sleepData = data.map(entry => entry.duration);
 
@@ -234,8 +227,6 @@
                 sleep_duration: sleepDuration
             };
 
-            console.log("Sending sleep data to server:", sleepData);
-
             fetch('/sleep/save', {
                 method: 'POST',
                 headers: {
@@ -248,7 +239,6 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                console.log('수면기록 저장 완료');
                 document.getElementById('total-sleep-time').textContent = `총 수면시간은 ${sleepDurationHours} 시간 ${remainingMinutes} 분 입니다.`;
                 loadSleepData();
                 loadSleepChart();
@@ -296,10 +286,8 @@
         let currentDate = new Date();
         const today = new Date();
         const updateDate = (offset) => {
-            console.log(currentDate.getDate() + offset);
             currentDate.setDate(currentDate.getDate() + offset);
             const isoDate = currentDate.toISOString().split('T')[0];
-            console.log(isoDate);
             currentDateElement.textContent = `${currentDate.getFullYear()}년 ${currentDate.getMonth() + 1}월 ${currentDate.getDate()}일`;
             document.getElementById('next-day').disabled = currentDate.toDateString() === today.toDateString();
 

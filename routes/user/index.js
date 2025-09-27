@@ -77,7 +77,6 @@ router.post('/password/emailVarificaiton', passwordResetLinkPOST);
 */
 router.get('/password/change', function(req, res) {
   const {token} = req.query;
-  console.log('token: ', token);
   
   res.render("user/changePassword", {token});
 });

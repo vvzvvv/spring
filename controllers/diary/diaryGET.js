@@ -3,14 +3,12 @@ const { authenticateToken } = require("../../authenticateToken");
 
 module.exports = async (req, res) => {
     const { date } = req.params;
-    console.log(date);
 
     const authHeader = req.headers.authorization;
     const token = authHeader.split(' ')[1];
     const userID = await authenticateToken(token);
 
     try {
-        console.log('일기 불러오기 요청:', date);
         const entry = await diaryQuery.getDiaryEntry(date, userID);
 
         var diary = {};
@@ -19,10 +17,8 @@ module.exports = async (req, res) => {
             if (diary.photo) {
                 diary.photo = `${diary.photo}`;
             }
-            console.log(diary);
             return res.status(200).json({ diary });
         } else {
-            console.log(diary);
             return res.status(200).json({ diary });
         }
     } catch (error) {

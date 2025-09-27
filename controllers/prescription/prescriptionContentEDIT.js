@@ -8,7 +8,6 @@ module.exports = async (req, res) => {
         const data = await editPrescriptionContent(name, date, amount, prescriptionID);
         
         if(data.error){
-            console.log(data.error);
             return res.status(201).json({
                 status: false,
                 result: data.error,

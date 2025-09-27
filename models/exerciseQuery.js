@@ -14,7 +14,6 @@ const saveExercise = async (evaluation, exercise_date, start_time_hour, start_ti
 
         if (existingData) {
             // 이미 존재하는 경우
-            console.log('데이터가 이미 존재합니다:', existingData);
             return { error: '이미 같은 날짜의 데이터가 존재합니다.', data: existingData };
         }
 
@@ -29,7 +28,6 @@ const saveExercise = async (evaluation, exercise_date, start_time_hour, start_ti
             user_id: user_id,
         });
 
-        console.log('새 데이터가 저장되었습니다:', data);
         return data;
     } catch (error) {
         console.error('Error in saveExercise:', error);

@@ -10,7 +10,6 @@ const saveExercise = async (req, res) => {
         const token = authHeader.split(' ')[1];
         
         const userID = await authenticateToken(token);
-        console.log(userID);
 
         const report = await db.exerciseReport.create({
             exercise_rate : evaluation, 

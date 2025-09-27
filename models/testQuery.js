@@ -13,7 +13,6 @@ const postTest = async(date, score, resultString, userID) => {
 
         if (existingData) {
             // 이미 존재하는 경우
-            console.log('데이터가 이미 존재합니다:', existingData);
             return { error: '이미 같은 날짜의 데이터가 존재합니다.', data: existingData };
         }
 
@@ -25,7 +24,6 @@ const postTest = async(date, score, resultString, userID) => {
             user_id: userID,
         });
 
-        console.log('새 데이터가 저장되었습니다:', data);
         return data;
     } catch (error) {
         console.error('Error in postTest:', error);
@@ -38,8 +36,7 @@ const getTestList = async(userID) => {
         where: {
             user_id: userID
         },
-    })
-    // console.log(data);
+	});
     return data;
 }
 
@@ -48,7 +45,7 @@ const getTest = async(testID) => {
         where: {
             test_id: testID,
         }
-    })
+    });
     return data;
 }
 

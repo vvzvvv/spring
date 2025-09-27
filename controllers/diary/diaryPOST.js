@@ -24,18 +24,14 @@ module.exports = [upload.single('photo'), async (req, res) => {
     const photoFile = req.file;
 
     const userID = await authenticateToken(token);
-    console.log(userID);
-
 
     let photoUrl = existingPhotoUrl;
 
     if (photoFile) {
         photoUrl = `https://storage.googleapis.com/spring-image/${photoFile.filename}`;
-        console.log('업로드된 파일:', photoFile);
     }
 
     try {
-        console.log('일기 저장 요청:', { userID, date, weather, contents, photoUrl });
         const entry = await diaryQuery.saveDiaryEntry(userID, date, weather, contents, photoUrl);
         res.status(200).json({ message: '저장 완료', entry });
     } catch (error) {

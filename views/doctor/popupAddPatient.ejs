@@ -72,7 +72,7 @@
 
         const token = localStorage.getItem('token');
 
-        fetch(`doctor/searchPatient/${searchInput}`, {
+        fetch(`doctor/searchPatient`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

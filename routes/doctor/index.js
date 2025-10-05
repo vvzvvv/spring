@@ -24,7 +24,7 @@ router.get('/board/:userId', openPatientPageGET);
 router.get('/getAllPatients', getAllPatientsGET);
 
 // 환자 검색 post 
-router.post('/searchPatient/:searchInput', searchPatientPOST);
+router.post('/searchPatient', searchPatientPOST);
 // 환자 추가 신청 post
 router.post('/addPatient', addPatientPOST);
 

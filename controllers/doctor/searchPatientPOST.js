@@ -3,7 +3,7 @@ const { authenticateTokenDoctor } = require('../../authenticateToken');
 
 module.exports = async (req, res) => {
     try {
-        const searchInput = req.params.searchInput;
+        const searchInput = req.body.searchInput;
 
         const authHeader = req.headers.authorization;
         const token = authHeader.split(' ')[1];

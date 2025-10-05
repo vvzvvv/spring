@@ -58,7 +58,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const token = localStorage.getItem('token');
             
-            fetch('/doctor_main/getAllPatients', {
+            fetch('/doctor/getAllPatients', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

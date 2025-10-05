@@ -63,7 +63,13 @@
 	}
 
     function searchPatient() {
-        const searchInput = document.getElementById('searchInput').value;
+        const searchInput = document.getElementById('searchInput').value.trim();
+
+		if (!searchInput) {
+			alert('검색어를 입력하세요.');
+			return;
+		}
+
         const token = localStorage.getItem('token');
 
         fetch(`doctor/searchPatient/${searchInput}`, {

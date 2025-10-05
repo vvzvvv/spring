@@ -2,7 +2,7 @@
 function searchPatients() {
     const token = localStorage.getItem('token');
     const searchInput = document.getElementById('patient-search').value;
-    fetch('/doctor_main/searchMyPatients', {
+    fetch('/doctor/searchMyPatients', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -27,31 +27,10 @@ function searchPatients() {
     });
 }
 
-//     const searchInput = document.getElementById('patient-search').value.toLowerCase();
-//     const patientTable = document.getElementById('patientSearchResults');
-//     const rows = patientTable.getElementsByTagName('tr');
-
-//     for (let i = 0; i < rows.length; i++) {
-//         const emailCell = rows[i].getElementsByTagName('td')[0];
-//         const nameCell = rows[i].getElementsByTagName('td')[1];
-
-//         if (emailCell || nameCell) {
-//             const emailText = emailCell.textContent.toLowerCase();
-//             const nameText = nameCell.textContent.toLowerCase();
-
-//             if (emailText.includes(searchInput) || nameText.includes(searchInput)) {
-//                 rows[i].style.display = ''; // 검색어와 일치하는 행을 표시
-//             } else {
-//                 rows[i].style.display = 'none'; // 검색어와 일치하지 않는 행을 숨김
-//             }
-//         }
-//     }
-// }
-
 // 요청 취소 기능
 function cancelRequest(doctorId, userId) {
     
-    fetch('/doctor_main/cancelRequest', {
+    fetch('/doctor/cancelRequest', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' 
@@ -94,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     const token = localStorage.getItem('token');
 
     if (token) {
-        fetch('/doctor_main/getRequestList', {
+        fetch('/doctor/getRequestList', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -114,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 // 환자 마이페이지 열람 기능
 function viewPatient(userId) {
-    window.location.href = `/doctor_main/board/${userId}`;
+    window.location.href = `/doctor/board/${userId}`;
 }
 
 

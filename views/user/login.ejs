@@ -18,7 +18,6 @@
                 </div>
                 <input type = "text" name="email" class = "text_input" required>
             </div>
-            <br><br>
 
             <div>
                 <div class = "text">
@@ -30,8 +29,6 @@
             <div>
                 <input class="button" type="submit" value="로그인">
             </div>
-            
-            <br>
 
             <div class = "member-footer">
                 <div>
@@ -40,7 +37,14 @@
                 </div>
             </div>
         </form>
+
+		<div class="toast" id="toast" style="display: none;">
+			<p class="toast-message"></p>
+		</div>
+
     </div>
+
+	<script src="/javascripts/toast.js"></script>
 
     <script>
         document.getElementById('login-form').addEventListener('submit', async function(event) {
@@ -59,12 +63,10 @@
                     },
                     body: JSON.stringify({email, password})
                 });
-               
 
                 if (response.status == 200) {
                     const data = await response.json();
                     localStorage.setItem('token', data.token);  // 서버에서 받은 token이 브라우저에 저장됨
-                    alert(`${data.message}`);
 
                     // 로그인한 사용자가 환자인 경우
                     if (data.user == "patient") {
@@ -78,22 +80,18 @@
                 }
                 else if (response.status === 404) {   // 존재하지 않는 사용자인 경우
                     const error = await response.json();
-                    alert(`${error.message}`);
-                    window.location.href = '/user/join/patient';
+                    showToast(error.message);
                 }
                 else if (response.status === 401) {     // 비밀번호가 일치하지 않는 경우
                     const error = await response.json();
-                    alert(`${error.message}`);
-                    window.location.href = '/user/login';
+                    showToast(error.message);
                 }
                 else {
                     const error = await response.json();
-                    alert(`${error.message}`);
-                    window.location.href = '/';
+                    showToast(error.message);
                 }
             } catch (err) {
                 console.error('Error:', err);
-                alert(`${error.message}`);
             }
         });
     </script>

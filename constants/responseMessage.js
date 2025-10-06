@@ -10,6 +10,7 @@ module.exports = {
     DIFFRERENT_PASSWORD: '비밀번호와 비밀번호 확인이 일치하지 않습니다',
     SIGNUP_OK: '가입 가능합니다',
     SIGNUP_NOT_OK: '가입 불가능합니다',
+	NO_LICENSE: '의사면허증이 필요합니다.',
   
     // 로그인
     LOGIN_SUCCESS: '로그인 성공',
@@ -17,8 +18,8 @@ module.exports = {
     ALREADY_LOGIN: '이미 로그인 중입니다.',
     NEED_LOGIN: '로그인이 필요한 서비스 입니다.',
     NO_USER: '존재하지 않는 회원입니다.',
-    MISS_MATCH_PW: '비밀번호가 맞지 않습니다.',
     INVALID_EMAIL: '이메일 형식을 확인해주세요.',
+	WRONG_INPUT: '아이디 또는 비밀번호를 잘못 입력했습니다.',
 
     // 로그아웃
     LOGOUT_SUCCESS: '로그아웃 성공',

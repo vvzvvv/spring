@@ -14,7 +14,6 @@
     width: 40rem;
 }
 
-
 /*
 회원가입할때 환자인지 의사인지 선택하는 버튼 관련 CSS
 */
@@ -48,6 +47,7 @@
 
     text-decoration: none;
 }
+
 .user .right {
     display: inline-block;
 
@@ -61,8 +61,6 @@
     margin-top: 12.4rem;
     margin-bottom: 10.1rem;
 }
-
-
 
 .user .form {
     width: 50rem;
@@ -80,10 +78,6 @@
     font-size: 2rem;
     text-decoration: none;
 }
-
-
-
-
 
 .user .text_input {
     background-color: #F5F5F5;
@@ -188,4 +182,11 @@
 
 a:visited {
     color: inherit;
+}
+
+.toast { 
+	text-align: center; 
+	color: red; 
+	font-size: 20px;
+	margin-top: 25px;
 }

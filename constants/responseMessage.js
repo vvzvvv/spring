@@ -6,7 +6,8 @@ module.exports = {
     // 회원가입
     CREATED_USER: '회원 가입 성공',
     DELETE_USER: '회원 탈퇴 성공',
-    ALREADY_EMAIL: '이미 사용중인 이메일입니다.',
+    NON_AVAILABLE_EMAIL: '이미 사용중인 이메일입니다.',
+	AVAILABLE_EMAIL: '사용 가능한 이메일입니다.',
     DIFFRERENT_PASSWORD: '비밀번호와 비밀번호 확인이 일치하지 않습니다',
     SIGNUP_OK: '가입 가능합니다',
     SIGNUP_NOT_OK: '가입 불가능합니다',
@@ -27,8 +28,18 @@ module.exports = {
 
     // 프로필 조회
     READ_PROFILE_SUCCESS: '프로필 조회 성공',
-  
-    // 유저
+
+	// 프로필 수정
+	SUCCESS_UPDATE_PASSWORD: '비밀번호 변경이 완료되었습니다.',
+	FAIL_UPDATE_PASSWORD: '비밀번호 변경에 실패하였습니다.',
+
+	// 비밀번호 초기화
+	NOT_FOUND_EMAIL: '등록된 이메일이 아닙니다.\n이메일을 확인해주세요.',
+	SEND_PASSWORD_RESET_LINK_SUCCESS: '입력하신 이메일로 비밀번호 초기화 링크를 전송하였습니다.',
+	SEND_PASSWORD_RESET_LINK_FAIL: '링크 전송에 실패하였습니다.\n다시 시도해주세요.',
+    
+	
+	// 유저
     READ_ONE_USER_SUCCESS: '유저 조회 성공',
     READ_ALL_USERS_SUCCESS: '모든 유저 조회 성공',
     UPDATE_ONE_USER_SUCCESS: '유저 수정 성공',

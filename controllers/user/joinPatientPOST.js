@@ -1,5 +1,7 @@
-const db = require('../../models/index');
 const dotenv = require('dotenv');
+const db = require('../../models/index');
+const responseMessage = require('../../constants/responseMessage');
+const statusCode = require('../../constants/statusCode');
 
 dotenv.config();
 
@@ -10,7 +12,7 @@ const join = async (req, res) => {
 
         // 비밀번호 일치여부 검증 로직
         if (password !== passwordCheck) {
-            return res.status(409).send({message: "비밀번호가 일치하지 않습니다.\n다시 입력해주세요."});
+            return res.status(statusCode.CONFLICT).send({message: responseMessage.DIFFRERENT_PASSWORD});
         }
 
         // 새로운 사용자 회원가입
@@ -20,8 +22,8 @@ const join = async (req, res) => {
                 email: email,
                 password: password
             });
-            
-            return res.status(200).send({ message: "회원가입 되었습니다.\n로그인 해주세요."});
+
+            return res.status(statusCode.OK).send({ message: responseMessage.CREATED_USER });
         }
     } catch (err) {
         res.status(500).send({

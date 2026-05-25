@@ -23,7 +23,7 @@ const join = async (req, res) => {
                 password: password
             });
 
-            return res.status(statusCode.OK).send({ message: responseMessage.CREATED_USER });
+            return res.status(statusCode.CREATED).send({ message: responseMessage.CREATED_USER });
         }
     } catch (err) {
         res.status(500).send({

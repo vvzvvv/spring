@@ -26,7 +26,13 @@
           </div>
         </form>
 
+		<div class="toast" id="toast" style="display: none;">
+	  	  <p class="toast-message"></p>
+		</div>
+
     </div>
+
+	<script src="/javascripts/toast.js"></script>
 
     <script>
       document.getElementById('emailVerification-form').addEventListener('submit', async function(event) {
@@ -47,15 +53,14 @@
 
           if (response.status == 200) {
             const data = await response.json();
-            alert(`${data.message}`);
             window.location.href = '/user/login';
           }
           else if (response.status == 404) {
             const data = await response.json();
-            alert(`${data.message}`);
+            showToast(`${data.message}`);
           }
         } catch (error) {
-          alert(`${error.message}`);
+            alert(`${error.message}`);
         }
       });
     </script>

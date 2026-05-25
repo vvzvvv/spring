@@ -61,7 +61,7 @@ const changePassword = async function (req, res) {
             token: token
         });
     } catch (error) {
-        res.status(500).send({ message: responseMessage.FAIL_UPDATE_PASSWORD });
+        res.status(statusCode.INTERNAL_SERVER_ERROR).send({ message: responseMessage.FAIL_UPDATE_PASSWORD });
     }
 };
 

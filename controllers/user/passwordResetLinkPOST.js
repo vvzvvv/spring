@@ -23,8 +23,10 @@ const findPassword = async function (req, res) {
 
         // 환자, 의사 둘다 찾지 못한 경우
         if (findPatient === null && findDoctor === null) {
-            return res.status(statusCode.NOT_FOUND).send({ message: responseMessage.NOT_FOUND_EMAIL });
-        }
+			return res.status(statusCode.OK).send({
+			message: responseMessage.SEND_PASSWORD_RESET_LINK_SUCCESS,
+		});
+	}
 
         let token = '';
 

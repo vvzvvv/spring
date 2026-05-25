@@ -53,14 +53,17 @@
 
           if (response.status == 200) {
             const data = await response.json();
-            window.location.href = '/user/login';
+			showToast(`${data.message}`);
+			setTimeout(() => {
+              window.location.href = '/user/login';
+          	}, 1500);
           }
           else if (response.status == 404) {
             const data = await response.json();
             showToast(`${data.message}`);
           }
         } catch (error) {
-            alert(`${error.message}`);
+            showToast(`${error.message}`);
         }
       });
     </script>

@@ -52,7 +52,9 @@ const changePassword = async function (req, res) {
         // 비밀번호 변경 후 토큰 데이터베이스에 저장되어 있는 토큰 삭제
         const passwordToken = await db.passwordToken.findOne({ where: { email: email } });
 
-        await passwordToken.destroy();
+        if (passwordToken) {
+			await passwordToken.destroy();
+		}
 
         res.status(statusCode.OK).send({
             message: responseMessage.SUCCESS_UPDATE_PASSWORD,

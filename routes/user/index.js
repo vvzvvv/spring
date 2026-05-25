@@ -69,7 +69,7 @@ router.get('/emailVerification', function(req, res) {
   res.render("user/emailVerification");
 });
 
-router.post('/password/emailVarificaiton', passwordResetLinkPOST);
+router.post('/password/emailVerification', passwordResetLinkPOST);
 
 
 /*

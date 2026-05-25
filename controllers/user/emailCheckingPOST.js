@@ -24,7 +24,7 @@ const emailCheck = async (req, res) => {
         });
     } catch (err) {
         res.status(statusCode.INTERNAL_SERVER_ERROR).send({
-            message: err.message
+            message: responseMessage.INTERNAL_SERVER_ERROR
         });
     }
 }

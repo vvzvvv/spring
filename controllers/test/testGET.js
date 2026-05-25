@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
         for(var test of result){   
             testList.push(test.get(0));
         }
-        console.log(testList);
+
         return testList[0];
     }
     catch(err) {

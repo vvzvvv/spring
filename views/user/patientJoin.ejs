@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="/stylesheets/users/user.css" rel="stylesheet">
+<link href="/stylesheets/user.css" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <%-include('../header.ejs') %>
 
@@ -52,13 +52,21 @@
         </div>
 
       </form>
+
+	  <div class="toast" id="toast" style="display: none;">
+		  <p class="toast-message"></p>
+	  </div>
+
   </div>
+
+  <script src="/javascripts/toast.js"></script>
+  
   <script>
     document.getElementById('check-email-button').addEventListener('click', async function() {
       const email = document.querySelector('input[name="email"]').value;
 
       if (!email) {
-        alert('이메일을 입력해주세요.');
+		showToast('이메일을 입력해주세요.');
         return;
       }
       
@@ -73,15 +81,14 @@
 
         if (response.status === 200) {
           const data = await response.json();
-          alert(`${data.message}`);
+          showToast(data.message);
         }
-        else if (response.status === 404) {
+        else if (response.status === 409) {
           const error = await response.json();
-          alert(`${error.message}`);
+          showToast(error.message);
         }
       } catch (err) {
         console.error('Error:', err);
-        alert(`${error.message}`);
       }
     });
 
@@ -109,20 +116,18 @@
 
         if (response.status === 200) {
           const data = await response.json();
-          alert(`${data.message}`);
           window.location.href = '/user/login';
         }
         else if (response.status === 409) {
           const error = await response.json();
-          alert(`${error.message}`);
+          showToast(error.message);
         }
         else {
           const error = await response.json();
-          alert(`${error.message}`);
+          showToast(error.message);
         }
       } catch (err) {
         console.error('Error:', err);
-        alert(`${error.message}`);
       }
     });
   </script>

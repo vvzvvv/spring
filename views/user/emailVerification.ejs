@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<link href="/stylesheets/users/user.css" rel="stylesheet">
+<link href="/stylesheets/user.css" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <%-include('../header.ejs') %>
 
@@ -20,17 +20,19 @@
             </div>
 
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
 
           <div>
             <input class="button" type="submit" value="전송">
           </div>
         </form>
 
+		<div class="toast" id="toast" style="display: none;">
+	  	  <p class="toast-message"></p>
+		</div>
+
     </div>
+
+	<script src="/javascripts/toast.js"></script>
 
     <script>
       document.getElementById('emailVerification-form').addEventListener('submit', async function(event) {
@@ -41,7 +43,7 @@
         const email = formData.get('email');
         
         try {
-          const response = await fetch('/user/password/emailVarificaiton', {
+          const response = await fetch('/user/password/emailVerification', {
             method: 'POST',
             headers: {
               'Content-Type' : 'application/json'
@@ -51,15 +53,17 @@
 
           if (response.status == 200) {
             const data = await response.json();
-            alert(`${data.message}`);
-            window.location.href = '/user/login';
+			showToast(`${data.message}`);
+			setTimeout(() => {
+              window.location.href = '/user/login';
+          	}, 1500);
           }
           else if (response.status == 404) {
             const data = await response.json();
-            alert(`${data.message}`);
+            showToast(`${data.message}`);
           }
         } catch (error) {
-          alert(`${error.message}`);
+            showToast(`${error.message}`);
         }
       });
     </script>

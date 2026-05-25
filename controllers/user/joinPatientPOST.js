@@ -12,7 +12,7 @@ const join = async (req, res) => {
 
         // 비밀번호 일치여부 검증 로직
         if (password !== passwordCheck) {
-            return res.status(statusCode.CONFLICT).send({message: responseMessage.DIFFRERENT_PASSWORD});
+            return res.status(statusCode.CONFLICT).send({message: responseMessage.DIFFERENT_PASSWORD});
         }
 
         // 새로운 사용자 회원가입

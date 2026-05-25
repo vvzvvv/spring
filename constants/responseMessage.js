@@ -8,7 +8,7 @@ module.exports = {
     DELETE_USER: '회원 탈퇴 성공',
     NON_AVAILABLE_EMAIL: '이미 사용중인 이메일입니다.',
 	AVAILABLE_EMAIL: '사용 가능한 이메일입니다.',
-    DIFFRERENT_PASSWORD: '비밀번호와 비밀번호 확인이 일치하지 않습니다',
+    DIFFERENT_PASSWORD: '비밀번호와 비밀번호 확인이 일치하지 않습니다',
     SIGNUP_OK: '가입 가능합니다',
     SIGNUP_NOT_OK: '가입 불가능합니다',
 	NO_LICENSE: '의사면허증이 필요합니다.',

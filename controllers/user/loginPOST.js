@@ -19,7 +19,7 @@ const login = async(req, res, next) => {
         
         // 환자, 의사 둘다 찾지 못한 경우
         if (findPatient === null && findDoctor === null) {
-            return res.status(statusCode.NOT_FOUND).send({message: responseMessage.WRONG_INPUT});
+            return res.status(statusCode.UNAUTHORIZED).send({message: responseMessage.WRONG_INPUT});
         }
 
         // 환자가 로그인한 경우

@@ -16,7 +16,7 @@ const changePassword = async function (req, res) {
     
     // 비밀번호 더블체크 로직
     if (newPassword !== doubleCheckNewPassword) {
-        return res.status(statusCode.BAD_REQUEST).send(responseMessage.DIFFRERENT_PASSWORD);
+        return res.status(statusCode.BAD_REQUEST).send({ message: responseMessage.DIFFRERENT_PASSWORD });
     }
 
     try {

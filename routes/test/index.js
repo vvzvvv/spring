@@ -1,15 +1,17 @@
-var express = require('express');
+const express = require('express');
+const router = express.Router();
+
+const { authUser } = require('../../middleware/auth');
 const testPOST = require('../../controllers/test/testPOST');
 const testListGET = require('../../controllers/test/testListGET');
 const testGET = require('../../controllers/test/testGET');
-var router = express.Router();
 
 /* GET home page. */
 router.get('/', async (req, res)=>{
   res.render('test/test');
 });
-router.post('/',testPOST)
-router.get('/list', testListGET);
+router.post('/', authUser, testPOST)
+router.get('/list', authUser, testListGET);
 router.get('/content', testGET);
 
 router.get('/:testID', async (req, res)=>{

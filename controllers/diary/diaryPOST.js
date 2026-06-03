@@ -1,8 +1,6 @@
 const diaryQuery = require('../../models/diaryQuery');
 const multer = require('multer');
 const multerGoogleStorage = require('multer-google-storage');
-const { authenticateToken } = require("../../authenticateToken");
-
 
 const upload = multer({
     storage: new multerGoogleStorage.storageEngine({
@@ -17,13 +15,8 @@ const upload = multer({
 
 module.exports = [upload.single('photo'), async (req, res) => {
     const { date, weather, contents, existingPhotoUrl } = req.body;
-    
-    const authHeader = req.headers.authorization;
-    const token = authHeader.split(' ')[1];
-    
     const photoFile = req.file;
-
-    const userID = await authenticateToken(token);
+	const userID = req.userId;
 
     let photoUrl = existingPhotoUrl;
 

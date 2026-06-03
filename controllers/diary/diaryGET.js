@@ -1,12 +1,8 @@
 const diaryQuery = require('../../models/diaryQuery');
-const { authenticateToken } = require("../../authenticateToken");
 
 module.exports = async (req, res) => {
     const { date } = req.params;
-
-    const authHeader = req.headers.authorization;
-    const token = authHeader.split(' ')[1];
-    const userID = await authenticateToken(token);
+	const userID = req.userId;
 
     try {
         const entry = await diaryQuery.getDiaryEntry(date, userID);

@@ -1,16 +1,11 @@
 const db = require('../../models/index');
-const { authenticateToken } = require("../../authenticateToken");
 
 // 운동 기록 저장
 const saveExercise = async (req, res) => {
     try {
-        const { evaluation, exercise_date, start_exercise_time, end_exercise_time, exercise_type, comments, user_id } = req.body;
-
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-        
-        const userID = await authenticateToken(token);
-
+        const { evaluation, exercise_date, start_exercise_time, end_exercise_time, exercise_type, comments } = req.body;
+		const userID = req.userId;
+		
         const report = await db.exerciseReport.create({
             exercise_rate : evaluation, 
             exercise_date : exercise_date,

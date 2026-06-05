@@ -1,18 +1,9 @@
 const {putManagementList, postManagementList, deleteManagementList} = require("../../models/myPageQuery");
 
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const secretKey = process.env.MY_SECRET;
-
 module.exports = async (req, res) => {
     try {
         const {flag, requestID, doctorID} = req.body;
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-
-        const decode = jwt.verify(token, secretKey);
-
-        const userID = decode.userId;
+        const userID = req.userId;
         
         var num;
         switch(flag){
@@ -35,4 +26,4 @@ module.exports = async (req, res) => {
     catch(err) {
         console.error(err);
     }
-}
+};

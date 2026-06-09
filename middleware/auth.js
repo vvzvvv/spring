@@ -4,7 +4,16 @@ const secretKey = process.env.MY_SECRET;
 
 function extractToken(req) {
 	const authHeader = req.headers.authorization;
+
+	if (!authHeader) {
+		return null;
+	}
+
 	const parts = authHeader.split(' ');
+
+	if (parts.length !== 2 || parts[0] !== 'Bearer') {
+		return null;
+	}
 
 	return parts[1];
 }
@@ -12,6 +21,11 @@ function extractToken(req) {
 function authUser(req, res, next) {
 	try {
 		const token = extractToken(req);
+
+		if (!token) {
+			return res.status(401).json({ message: '토큰이 없습니다.' });
+		}
+
 		const decoded = jwt.verify(token, secretKey);
 		req.userId = decoded.userId;
 
@@ -24,8 +38,13 @@ function authUser(req, res, next) {
 function authDoctor(req, res, next) {
 	try {
 		const token = extractToken(req);
+
+		if (!token) {
+			return res.status(401).json({ message: '토큰이 없습니다.' });
+		}
+		
 		const decoded = jwt.verify(token, secretKey);
-		req.doctorId = decoded.doxtorId;
+		req.doctorId = decoded.doctorId;
 		
 		return next();
 	} catch (error) {

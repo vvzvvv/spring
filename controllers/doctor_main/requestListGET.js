@@ -1,13 +1,8 @@
 const { getRequestList } = require('../../models/doctorMainQuery');
-const { authenticateTokenDoctor } = require('../../authenticateToken');
 
 module.exports = async (req, res) => {
     try {
-        //const { doctorId } = req.params;
-
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-        const doctorId = await authenticateTokenDoctor(token);
+        const doctorId = req.doctorId;
 
         const requests = await getRequestList(doctorId);
         res.json(requests);

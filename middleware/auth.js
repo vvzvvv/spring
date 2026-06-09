@@ -1,4 +1,7 @@
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const secretKey = process.env.MY_SECRET;
 
@@ -20,35 +23,53 @@ function extractToken(req) {
 
 function authUser(req, res, next) {
 	try {
+		if (!secretKey) {
+			return res.status(500).json({ message: 'JWT secret is not configured' });
+		}
+
 		const token = extractToken(req);
 
 		if (!token) {
-			return res.status(401).json({ message: '토큰이 없습니다.' });
+			return res.status(401).json({ message: 'Token not provided' });
 		}
 
 		const decoded = jwt.verify(token, secretKey);
+
+		if (!decoded.userId) {
+			return res.status(403).json({ message: 'Invalid user token' });
+		}
+
 		req.userId = decoded.userId;
 
 		return next();
 	} catch (error) {
-		return res.status(403).json({ message: '인증 실패' });
+		return res.status(403).json({ message: 'Invalid token' });
 	}
 }
 
 function authDoctor(req, res, next) {
 	try {
+		if (!secretKey) {
+			return res.status(500).json({ message: 'JWT secret is not configured' });
+		}
+
 		const token = extractToken(req);
 
 		if (!token) {
-			return res.status(401).json({ message: '토큰이 없습니다.' });
+			return res.status(401).json({ message: 'Token not provided' });
 		}
 		
 		const decoded = jwt.verify(token, secretKey);
+
+		if (!decoded.doctorId) {
+			return res.status(403).json({ message: 'Invalid doctor token' });
+		}
+
 		req.doctorId = decoded.doctorId;
 		
 		return next();
 	} catch (error) {
-		return res.status(403).json({ message: '인증 실패' });
+		return res.status(403).json({ message: 'Invalid token' });
 	}
 }
 

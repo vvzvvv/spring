@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { authUser, authDoctor } = require('../../middleware/auth');
 
 dotenv.config();
+process.env.MY_SECRET = process.env.MY_SECRET || 'test-secret';
 
 describe('Middleware - 인증 미들웨어 (auth.js)', () => {
   let req, res, next;

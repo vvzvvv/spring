@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const express = require('express');
 
 dotenv.config();
+process.env.MY_SECRET = process.env.MY_SECRET || 'test-secret';
 
 // Mock Sequelize 모델
 jest.mock('../../models', () => ({

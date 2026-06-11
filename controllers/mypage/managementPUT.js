@@ -4,6 +4,10 @@ module.exports = async (req, res) => {
     try {
         const {flag, requestID, doctorID} = req.body;
         const userID = req.userId;
+
+		if (!['toAccept', 'toRefuse', 'toDelete'].includes(flag)) {
+            return res.status(400).json({ message: 'Invalid flag value' });
+        }
         
         var num;
         switch(flag){

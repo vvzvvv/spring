@@ -29,5 +29,6 @@ module.exports = async (req, res) => {
     }
     catch(err) {
         console.error(err);
+		return res.status(500).json({ message: "담당 의사 관리 정보 저장 중 오류 발생" });
     }
 };

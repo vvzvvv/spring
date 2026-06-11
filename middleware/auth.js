@@ -12,9 +12,9 @@ function extractToken(req) {
 		return null;
 	}
 
-	const parts = authHeader.split(' ');
+	const parts = authHeader.split(/\s+/);
 
-	if (parts.length !== 2 || parts[0] !== 'Bearer') {
+	if (parts.length !== 2 || parts[0].toLowerCase() !== 'bearer') {
 		return null;
 	}
 

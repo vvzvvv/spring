@@ -99,6 +99,9 @@
 - 개인정보 수정 및 계정 관리
 - 정보 제공 동의 관리: 약/수면/운동/테스트 정보 각각 공유 여부 설정
 
+<img alt="image" src="https://github.com/user-attachments/assets/e2a659a2-1360-4a14-84b9-915d752e2083" />
+
+
 ---
 
 ### 🧑🏻‍⚕️ 의사 기능

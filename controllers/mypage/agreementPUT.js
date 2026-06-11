@@ -11,5 +11,6 @@ module.exports = async (req, res) => {
     }
     catch(err) {
         console.error(err);
+		return res.status(500).json({ message: "동의 정보 저장 중 오류 발생" });
     }
 };

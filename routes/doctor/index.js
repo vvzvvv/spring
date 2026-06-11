@@ -11,21 +11,22 @@ const addPatientPOST = require('../../controllers/doctor/addPatientPOST');
 
 var express = require('express');
 var router = express.Router();
+const { authDoctor } = require('../../middleware/auth');
 
 router.get('/', async (req, res)=>{
   res.render('doctor/doctor_main');
 });
 
 // 새로운 라우트들 추가하기
-router.post('/searchMyPatients', searchMyPatientsPOST);
-router.get('/getRequestList', getRequestListGET);
-router.post('/cancelRequest', cancelRequestPOST);
-router.get('/board/:userId', openPatientPageGET);
-router.get('/getAllPatients', getAllPatientsGET);
+router.post('/searchMyPatients', authDoctor, searchMyPatientsPOST);
+router.get('/getRequestList', authDoctor, getRequestListGET);
+router.post('/cancelRequest', authDoctor, cancelRequestPOST);
+router.get('/board/:userId', authDoctor, openPatientPageGET);
+router.get('/getAllPatients', authDoctor, getAllPatientsGET);
 
 // 환자 검색 post 
-router.post('/searchPatient', searchPatientPOST);
+router.post('/searchPatient', authDoctor, searchPatientPOST);
 // 환자 추가 신청 post
-router.post('/addPatient', addPatientPOST);
+router.post('/addPatient', authDoctor, addPatientPOST);
 
 module.exports = router;

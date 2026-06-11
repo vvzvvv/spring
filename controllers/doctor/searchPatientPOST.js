@@ -1,13 +1,9 @@
 const { getPatientSearch, getRequestStatus, getPatientManagement } = require("../../models/addPatientQuery");
-const { authenticateTokenDoctor } = require('../../authenticateToken');
 
 module.exports = async (req, res) => {
     try {
         const searchInput = req.body.searchInput;
-
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-        const doctorId = await authenticateTokenDoctor(token);
+        const doctorId = req.doctorId;
 
         const patients = await getPatientSearch(searchInput);
         

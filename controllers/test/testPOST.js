@@ -1,24 +1,12 @@
-// const responseMessage = require("../../constants/responseMessage");
-// const statusCode = require("../../constants/statusCode");
-const {postTest} = require("../../models/testQuery");
-const {authenticateToken} = require("../../authenticateToken");
-
+const { postTest } = require("../../models/testQuery");
 
 module.exports = async (req, res) => {
     try {
-        const {date, score, resultString} = req.body;
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-
-        console.log(token);
-
-        const userId = await authenticateToken(token);
-        console.log(userId);
-
+        const { date, score, resultString } = req.body;
+        const userId = req.userId;
         const result = await postTest(date, score, resultString, userId);
         
         if(result.error){
-            console.log(result.error);
             return res.status(201).json({
                 status: "fail",
                 data: result.data,

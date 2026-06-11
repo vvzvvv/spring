@@ -1,18 +1,13 @@
 const {putManagementList, postManagementList, deleteManagementList} = require("../../models/myPageQuery");
 
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-const secretKey = process.env.MY_SECRET;
-
 module.exports = async (req, res) => {
     try {
         const {flag, requestID, doctorID} = req.body;
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
+        const userID = req.userId;
 
-        const decode = jwt.verify(token, secretKey);
-
-        const userID = decode.userId;
+		if (!['toAccept', 'toRefuse', 'toDelete'].includes(flag)) {
+            return res.status(400).json({ message: 'Invalid flag value' });
+        }
         
         var num;
         switch(flag){
@@ -34,5 +29,6 @@ module.exports = async (req, res) => {
     }
     catch(err) {
         console.error(err);
+		return res.status(500).json({ message: "담당 의사 관리 정보 저장 중 오류 발생" });
     }
-}
+};

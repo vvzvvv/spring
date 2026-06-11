@@ -1,10 +1,9 @@
 const { cancelRequest } = require('../../models/doctorMainQuery');
-const { authenticateTokenDoctor } = require('../../authenticateToken');
 
 module.exports = async (req, res) => {
     try {
-
-        const { doctorId, userId } = req.body;
+        const doctorId = req.doctorId;
+        const { userId } = req.body;
 
         const result = await cancelRequest(doctorId, userId);
 

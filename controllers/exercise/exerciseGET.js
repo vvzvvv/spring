@@ -1,11 +1,8 @@
 const { getExerciseByDate } = require('../../models/exerciseQuery');
-const { authenticateToken } = require("../../authenticateToken");
 
 module.exports =async (req, res) => {
     try {
-        const authHeader = req.headers.authorization;
-        const token = authHeader.split(' ')[1];
-        const userID = await authenticateToken(token);
+		const userID = req.userId;
 
         const {date} = req.params;
         const result = await getExerciseByDate(userID, date)

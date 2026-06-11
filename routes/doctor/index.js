@@ -21,7 +21,7 @@ router.get('/', async (req, res)=>{
 router.post('/searchMyPatients', authDoctor, searchMyPatientsPOST);
 router.get('/getRequestList', authDoctor, getRequestListGET);
 router.post('/cancelRequest', authDoctor, cancelRequestPOST);
-router.get('/board/:userId', openPatientPageGET);
+router.get('/board/:userId', authDoctor, openPatientPageGET);
 router.get('/getAllPatients', authDoctor, getAllPatientsGET);
 
 // 환자 검색 post 
